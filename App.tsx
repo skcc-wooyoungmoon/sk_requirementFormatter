@@ -5,11 +5,12 @@ import { OutputPanel } from './components/OutputPanel';
 import { formatRequirements } from './services/geminiService';
 import { AppStatus } from './types';
 import type { FilePart } from './services/geminiService';
+import type { FormattedResult } from './types';
 
 const App: React.FC = () => {
   const [rawText, setRawText] = useState<string>('');
   const [files, setFiles] = useState<File[]>([]);
-  const [formattedText, setFormattedText] = useState<string>('');
+  const [formattedResult, setFormattedResult] = useState<FormattedResult | null>(null);
   const [status, setStatus] = useState<AppStatus>(AppStatus.IDLE);
   const [error, setError] = useState<string | null>(null);
 
@@ -34,12 +35,12 @@ const App: React.FC = () => {
 
     setStatus(AppStatus.LOADING);
     setError(null);
-    setFormattedText('');
+    setFormattedResult(null);
 
     try {
       const fileParts = await Promise.all(files.map(fileToPart));
       const result = await formatRequirements(rawText, fileParts);
-      setFormattedText(result);
+      setFormattedResult(result);
       setStatus(AppStatus.SUCCESS);
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : '알 수 없는 오류가 발생했습니다.';
@@ -51,7 +52,7 @@ const App: React.FC = () => {
   const handleClear = useCallback(() => {
     setRawText('');
     setFiles([]);
-    setFormattedText('');
+    setFormattedResult(null);
     setError(null);
     setStatus(AppStatus.IDLE);
   }, []);
@@ -73,7 +74,7 @@ const App: React.FC = () => {
         </div>
         <div className="lg:w-1/2 flex flex-col">
           <OutputPanel
-            formattedText={formattedText}
+            formattedResult={formattedResult}
             status={status}
             error={error}
           />
