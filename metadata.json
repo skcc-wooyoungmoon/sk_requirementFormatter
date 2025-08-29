@@ -1,0 +1,5 @@
+{
+  "name": "AI 요구사항 포맷터",
+  "description": "텍스트, 이미지, PDF, MS Office(Word, PowerPoint), 한글(HWP) 파일을 업로드하거나 텍스트를 직접 붙여넣어 비정형 요구사항을 전문가 수준의 체계적인 문서로 변환합니다. 개요, 주요 기능, 사용자 요구사항 등을 포함한 구조화된 마크다운을 생성합니다.",
+  "requestFramePermissions": []
+}

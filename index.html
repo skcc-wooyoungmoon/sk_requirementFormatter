@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI 요구사항 포맷터</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                DEFAULT: '#1e40af',
+                hover: '#1d4ed8',
+                light: '#3b82f6'
+              },
+              secondary: '#1f2937',
+              accent: '#f97316',
+              neutral: {
+                light: '#f3f4f6',
+                DEFAULT: '#e5e7eb',
+                dark: '#4b5563'
+              }
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.1.1",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.1/",
+    "react/": "https://esm.sh/react@^19.1.1/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.15.0",
+    "marked": "https://esm.sh/marked@^14.0.0"
+  }
+}
+</script>
+</head>
+  <body class="bg-neutral-light">
+    <div id="root"></div>
+  </body>
+</html>
